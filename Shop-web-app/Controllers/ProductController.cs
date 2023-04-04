@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop_web_app.Models;
+using Shop_web_app.Services.Interfaces;
 
 namespace Shop_web_app.Controllers
 {
     public class ProductController : Controller
     {
+        private readonly IWarehouseService _warehouseService;
+
+        public ProductController(IWarehouseService warehouseService)
+        {
+            _warehouseService = warehouseService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -26,33 +34,7 @@ namespace Shop_web_app.Controllers
 
         public IActionResult List()
         {
-            var productList = new List<Product>
-            {
-                new Product
-                {
-                    Id = 1,
-                    Category = "Car",
-                    Description = "Nice Car",
-                    Name = "Lexus CT250h",
-                    Price = 200000M
-                },
-                new Product
-                {
-                    Id = 2,
-                    Category = "Car",
-                    Description = "Nice Car",
-                    Name = "Lexus CT250h",
-                    Price = 200000M
-                },
-                new Product
-                {
-                    Id = 3,
-                    Category = "Car",
-                    Description = "Nice Car",
-                    Name = "Lexus CT250h",
-                    Price = 200000M
-                }
-            };
+            var productList = _warehouseService.GetAll();
 
             return View(productList);
         }

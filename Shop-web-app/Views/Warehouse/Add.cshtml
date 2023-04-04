@@ -6,5 +6,8 @@
 
 <h1>Form for adding product to warehouse</h1>
 
-@Html.Partial("_AddProductForm", Model)
+@*@Html.Partial("_AddProductForm", Model)*@
+<partial name="_AddProductForm" model=Model />
+
+<p>ID PO ZAPISIE (TempData): <strong>@TempData["ProductId"]</strong></p>
 
