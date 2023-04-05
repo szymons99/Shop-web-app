@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Shop_web_app.Models.Product>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<h1>List of products</h1>
+
+<ol>
+    @foreach (var product in Model)
+    {
+        <li>
+            <b>@product.Name</b> - @product.Category
+            <a href="@Url.Action("Details", "Warehouse", new { Id = product.Id})">Details</a>
+            
+            @using (Html.BeginForm("Delete", "Warehouse", FormMethod.Post))
+            {
+                <input type="hidden" name="Id" value="@product.Id"/>
+                <button type="submit">Delete</button>
+            }
+        </li>
+    }
+</ol>

@@ -4,9 +4,9 @@
 {
     @Html.ValidationSummary()
 
-    @Html.TextBoxFor(x => x.Name)
-    @Html.TextBoxFor(x => x.Description)
-    @Html.TextBoxFor(x => x.Category)
-    @Html.TextBoxFor(x => x.Price)
+    <b>Name: </b> @Html.TextBoxFor(x => x.Name)
+    <b>Description: </b>@Html.TextBoxFor(x => x.Description)
+    <b>Category: </b>@Html.TextBoxFor(x => x.Category)
+    <b>Price: </b>@Html.TextBoxFor(x => x.Price)
     <button type="submit">Send Form</button>
 }
