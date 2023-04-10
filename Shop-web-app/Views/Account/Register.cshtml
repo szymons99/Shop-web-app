@@ -1,0 +1,17 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Shop_web_app.Models.Register
+<h2>Register</h2>
+
+@using (Html.BeginForm("Register", "Acount", FormMethod.Post))
+{
+    @Html.ValidationSummary();
+
+    <span>Login: </span> @Html.TextBoxFor(x => x.UserName)
+    <span>Email: </span> @Html.TextBoxFor(x => x.Email)
+    <span>Password: </span> @Html.TextBoxFor(x => x.Password)
+
+    <button type="submit">Register</button>
+}

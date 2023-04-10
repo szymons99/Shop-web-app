@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shop_web_app.Models;
 using Shop_web_app.Services;
 using Shop_web_app.Services.Interfaces;
 
 namespace Shop_web_app.Controllers
 {
+    [Authorize]
     public class WarehouseController : Controller
     {
         private readonly IWarehouseService _warehouseService;

@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Shop_web_app;
+using Shop_web_app.Models;
 using Shop_web_app.Services;
 using Shop_web_app.Services.Interfaces;
 
@@ -11,6 +13,15 @@ builder.Services.AddDbContext<DbTestContext>(builder =>
 {
     builder.UseSqlServer(@"Data Source=DESKTOP-E20F6HG\SQLEXPRESS;Initial Catalog=DbTest;Integrated Security=True;TrustServerCertificate=true");
 });
+
+builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 2;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+}).AddEntityFrameworkStores<DbTestContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -29,6 +40,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
