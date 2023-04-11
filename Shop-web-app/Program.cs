@@ -8,10 +8,11 @@ using Shop_web_app.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+builder.Services.AddScoped<IApiService, ApiService>();
 
 builder.Services.AddDbContext<DbTestContext>(builder =>
 {
-    builder.UseSqlServer(@"Data Source=DESKTOP-E20F6HG\SQLEXPRESS;Initial Catalog=DbTest;Integrated Security=True;TrustServerCertificate=true");
+    builder.UseSqlServer(@"Data Source=SERVER HERE;Initial Catalog=DbTest;Integrated Security=True;TrustServerCertificate=true");
 });
 
 builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
